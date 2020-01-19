@@ -1,15 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 const Done = props => {
   const {name, count} = props.location.state;
 
-  const text = `${name}を${count}回やったぞ！`
-  const url = 'https://kintrainer.netlify.com/'
-  const hashtags = 'ワークアウト,筋トレ,kintrainer'
+  const text = `${name}を${count}回やったぞ！`;
+  const url = 'https://kintrainer.netlify.com/';
+  const hashtags = 'ワークアウト,筋トレ,kintrainer';
 
-  const tweetURI = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`
-  const encodedURI = encodeURI(tweetURI)
+  const tweetURI = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
+  const encodedURI = encodeURI(tweetURI);
 
   return (
     <div className="container">
@@ -21,8 +21,12 @@ const Done = props => {
         </li>
       </ul>
       <ul>
-      <li><a href={encodedURI}>Twitterへ投稿</a></li>
-      <li><Link to='/'>最初に戻る</Link></li>
+        <li>
+          <a href={encodedURI}>Twitterへ投稿</a>
+        </li>
+        <li>
+          <Link to="/">最初に戻る</Link>
+        </li>
       </ul>
     </div>
   );
