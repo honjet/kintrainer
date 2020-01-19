@@ -5,7 +5,11 @@
   "repository": "ssh://git@github.com/honjet/kintrainer.git",
   "author": "Jun Honda <honjetman@gmail.com>",
   "license": "MIT",
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.0"
+  },
   "dependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
