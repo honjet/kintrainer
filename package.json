@@ -5,6 +5,11 @@
   "repository": "ssh://git@github.com/honjet/kintrainer.git",
   "author": "Jun Honda <honjetman@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "yarn webpack",
+    "build:production": "yarn webpack --mode=production",
+    "start": "yarn webpack-dev-server --hot --inline"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
