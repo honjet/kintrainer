@@ -1,0 +1,8 @@
+{
+  "name": "kintrainer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/honjet/kintrainer.git",
+  "author": "Jun Honda <honjetman@gmail.com>",
+  "license": "MIT"
+}
