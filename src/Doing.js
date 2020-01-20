@@ -1,8 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
+import {Redirect} from 'react-router-dom';
 
 const Doing = props => {
-  const interval = 3; // とりあえず3秒 あとで設定できるようにする
+  if (props.location.state === undefined) {
+    return <Redirect to="/" />;
+  }
+
   const {name} = props.location.state;
+  const interval = 3; // とりあえず3秒 あとで設定できるようにする
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const count = () => parseInt(elapsedSeconds / interval, 10);
 
@@ -19,7 +24,9 @@ const Doing = props => {
     <div className="container">
       <h1>Now Training...</h1>
       <dl>
-        <dt>{props.location.state.name}: {interval}秒毎に1回</dt>
+        <dt>
+          {props.location.state.name}: {interval}秒毎に1回
+        </dt>
         <dd>
           <p>time: {elapsedSeconds}秒</p>
           <p>count: {count()}回</p>

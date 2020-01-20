@@ -1,13 +1,15 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 const Done = props => {
-  const {name, count} = props.location.state;
+  if (props.location.state === undefined) {
+    return <Redirect to="/" />;
+  }
 
+  const {name, count} = props.location.state;
   const text = `${name}を${count}回やったぞ！`;
   const url = 'https://kintrainer.netlify.com/';
   const hashtags = 'ワークアウト,筋トレ,kintrainer';
-
   const tweetURI = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
   const encodedURI = encodeURI(tweetURI);
 
