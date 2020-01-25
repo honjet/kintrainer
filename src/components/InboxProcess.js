@@ -1,7 +1,7 @@
 import React, {useReducer, useContext} from 'react';
 
 import InboxProcessItem from './InboxProcessItem';
-import DoContext from '@/contexts/DoContext';
+import DoContext from '@/contexts/doContext';
 import {inboxReducer} from '@/reducers/inboxReducer';
 
 const InboxProcess = props => {

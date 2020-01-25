@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 
 import Doing from './Doing';
-import DoContext from '@/contexts/DoContext'
+import DoContext from '@/contexts/doContext'
 import InboxForm from '@/components/InboxForm';
 
 const WillDo = props => {

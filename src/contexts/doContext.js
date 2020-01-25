@@ -3,7 +3,6 @@ import Workout from '@/models/workout';
 import WorkoutResult from '@/models/workoutResult';
 
 const DoContext = createContext();
-
 export default DoContext;
 
 export const workoutContext = {
@@ -25,7 +24,6 @@ export const workoutContext = {
     STANDBY: 'standby',
     PROGRESS: 'progress',
     DONE: 'done',
-    DISABLE: 'disable',
   },
   newItem: name => new Workout(name),
   newResult: (workout, count, seconds) =>

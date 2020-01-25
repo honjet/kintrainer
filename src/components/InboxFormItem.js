@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 
-import DoContext from '@/contexts/DoContext'
+import DoContext from '@/contexts/doContext'
 import {addAction, changeAction, removeAction} from '@/reducers/inboxReducer'
 
 const InboxFormItem = props => {

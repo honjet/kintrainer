@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect} from 'react';
 
-import DoContext from '@/contexts/DoContext';
+import DoContext from '@/contexts/doContext';
 import {changeAction, replaceAction} from '@/reducers/inboxReducer';
 
 const InboxProcessItem = props => {

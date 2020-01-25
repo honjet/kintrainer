@@ -1,7 +1,7 @@
 import React from 'react';
 
 import InboxProcess from '@/components/InboxProcess';
-import DoContext from '@/contexts/DoContext'
+import DoContext from '@/contexts/doContext'
 
 const Doing = props => {
   const {inbox, nextState} = props;

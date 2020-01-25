@@ -1,6 +1,6 @@
 import React, {useContext, useReducer} from 'react';
 
-import DoContext from '@/contexts/DoContext';
+import DoContext from '@/contexts/doContext';
 import {inboxReducer} from '@/reducers/inboxReducer';
 import InboxFormItem from './InboxFormItem';
 
