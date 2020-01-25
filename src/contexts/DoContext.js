@@ -1,5 +1,6 @@
 import {createContext} from 'react';
 import Workout from '@/models/workout';
+import WorkoutResult from '@/models/workoutResult';
 
 const DoContext = createContext();
 
@@ -8,6 +9,7 @@ export default DoContext;
 export const workoutContext = {
   name: 'workout',
   nameJa: '筋トレ',
+  doingDescription: 'Training',
   initialState: {
     inbox: [
       'プッシュアップ',
@@ -19,5 +21,13 @@ export const workoutContext = {
       '',
     ].map(s => new Workout(s)),
   },
+  processStatus: {
+    STANDBY: 'standby',
+    PROGRESS: 'progress',
+    DONE: 'done',
+    DISABLE: 'disable',
+  },
   newItem: name => new Workout(name),
+  newResult: (workout, count, seconds) =>
+    new WorkoutResult({workout, count, seconds}),
 };

@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import DoContext from '@/contexts/DoContext'
 import {addAction, changeAction, removeAction} from '@/reducers/inboxReducer'
 
-const InboxItem = props => {
+const InboxFormItem = props => {
   const {item, index, isBeforeLast, isLast, dispatch} = props;
   const context = useContext(DoContext);
 
@@ -30,4 +30,4 @@ const InboxItem = props => {
   );
 };
 
-export default React.memo(InboxItem);
+export default React.memo(InboxFormItem);

@@ -10,6 +10,10 @@ const InboxForm = props => {
   const [state, dispatch] = useReducer(inboxReducer, context.initialState);
   const lastIndex = state.inbox.length - 1;
 
+  const clickNextButton = () => {
+    nextState(state.inbox.filter(x => !x.isEmpty()));
+  };
+
   const inboxItem = (item, index) => (
     <InboxFormItem
       key={index}
@@ -24,7 +28,7 @@ const InboxForm = props => {
   return (
     <div>
       <ul>{state.inbox.map(inboxItem)}</ul>
-      <button onClick={() => nextState(state.inbox)}>次へ</button>
+      <button onClick={clickNextButton}>次へ</button>
     </div>
   );
 };

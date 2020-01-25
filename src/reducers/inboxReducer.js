@@ -1,3 +1,9 @@
+export const InboxActionType = {
+  CHANGE: 'change',
+  ADD: 'add',
+  REMOVE: 'remove',
+};
+
 export const inboxReducer = (state, action) => {
   switch (action.type) {
     case InboxActionType.CHANGE:
@@ -22,12 +28,6 @@ const changeInbox = (inbox, item, index) => {
 };
 
 const removeInbox = (inbox, index) => inbox.filter((_, i) => i !== index);
-
-export const InboxActionType = {
-  CHANGE: 'change',
-  ADD: 'add',
-  REMOVE: 'remove',
-};
 
 export const addAction = item => ({
   type: InboxActionType.ADD,
