@@ -2,7 +2,7 @@ import React, {useReducer, useContext} from 'react';
 
 import InboxProcessItem from './InboxProcessItem';
 import DoContext from '@/contexts/doContext';
-import {inboxReducer} from '@/reducers/inboxReducer';
+import InboxReducer from '@/reducers/inboxReducer';
 
 // TODO: インターバル時間はいずれ設定できるようにする
 const interval = 3;
@@ -10,7 +10,7 @@ const interval = 3;
 const InboxProcess = props => {
   const {inbox, nextState} = props;
   const context = useContext(DoContext);
-  const [state, dispatch] = useReducer(inboxReducer, {
+  const [state, dispatch] = useReducer(InboxReducer, {
     inbox: inbox.map(record => context.newProcess(record.name)),
   });
   const hasWIP = state.inbox.some(item => item.isWIP());

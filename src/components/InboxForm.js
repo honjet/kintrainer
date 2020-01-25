@@ -1,13 +1,13 @@
 import React, {useContext, useReducer} from 'react';
 
 import DoContext from '@/contexts/doContext';
-import {inboxReducer} from '@/reducers/inboxReducer';
+import InboxReducer from '@/reducers/inboxReducer';
 import InboxFormItem from './InboxFormItem';
 
 const InboxForm = props => {
   const {nextState} = props;
   const context = useContext(DoContext);
-  const [state, dispatch] = useReducer(inboxReducer, context.initialState);
+  const [state, dispatch] = useReducer(InboxReducer, context.initialState);
   const lastIndex = state.inbox.size - 1;
 
   const handleClickNext = () => {

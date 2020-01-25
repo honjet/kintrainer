@@ -6,7 +6,7 @@ export const InboxActionType = {
   REMOVE: 'remove',
 };
 
-export const inboxReducer = (state, action) => {
+export const InboxReducer = (state, action) => {
   const {inbox} = state;
   const {record, index} = action;
   switch (action.type) {
@@ -20,6 +20,7 @@ export const inboxReducer = (state, action) => {
       throw new Error();
   }
 };
+export default InboxReducer;
 
 const addInbox = (inbox, record) => inbox.push(record);
 const changeInbox = (inbox, record, index) => inbox.set(index, record);
