@@ -17,6 +17,10 @@ const InboxFormItem = props => {
     }
   };
 
+  const handleDeleteClick = () => {
+    dispatch(removeAction(index));
+  };
+
   return (
     <li>
       <input
@@ -26,6 +30,7 @@ const InboxFormItem = props => {
         value={item.name}
         onChange={e => handleNameChange(e.target.value)}
       />
+      <button onClick={handleDeleteClick}>×</button>
     </li>
   );
 };
