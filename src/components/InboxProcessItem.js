@@ -40,7 +40,7 @@ const InboxProcessItem = props => {
     <>
       <dt>
         <button onClick={handleStatus} disabled={disabled}>
-          {item.name}
+          {item.isWIP() ? 'ストップ' : item.name}
         </button>
         {processStatus}
       </dt>
