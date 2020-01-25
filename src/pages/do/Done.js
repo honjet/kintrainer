@@ -1,15 +1,17 @@
-import React from 'react';
-import {Redirect, Link} from 'react-router-dom';
+import React, {useContext} from 'react';
+
+import DoContext from '@/contexts/DoContext';
 
 const Done = props => {
-  if (props.location.state === undefined) {
-    return <Redirect to="/" />;
-  }
+  const {inbox} = props;
+  const context = useContext(DoContext);
 
-  const {name, count} = props.location.state;
-  const text = `${name}を${count}回やったぞ！`;
+  const text =
+    `${context.nameJa}完了！ ` +
+    inbox.map(x => `${x.name}: ${x.count}回 (${x.seconds}秒)`).join(',  ') +
+    ' | ';
   const url = 'https://kintrainer.netlify.com/';
-  const hashtags = 'ワークアウト,筋トレ,kintrainer';
+  const hashtags = '筋トレーナー';
   const tweetURI = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
   const encodedURI = encodeURI(tweetURI);
 
@@ -18,18 +20,13 @@ const Done = props => {
       <h1>トレーニング成果</h1>
       <p>おつかれさまでした！</p>
       <ul>
-        <li>
-          {name}: {count}回
-        </li>
+        {inbox.map((x, i) => (
+          <li key={i}>
+            {x.name}: {x.count}回 ({x.seconds}秒)
+          </li>
+        ))}
       </ul>
-      <ul>
-        <li>
-          <a href={encodedURI}>Twitterへ投稿</a>
-        </li>
-        <li>
-          <Link to="/">最初に戻る</Link>
-        </li>
-      </ul>
+      <a href={encodedURI}>Twitterへ投稿</a>
     </div>
   );
 };
