@@ -1,8 +1,5 @@
-export default class WorkoutResult {
-  constructor({workout, count, seconds, id = null}) {
-    this.id = id;
-    this.name = workout.name;
-    this.count = count;
-    this.seconds = seconds;
-  }
-}
+const {Record} = require('immutable');
+
+const WorkoutResultRecord = Record({name: '', count: 0, seconds: 0, id: null});
+
+export default class WorkoutResult extends WorkoutResultRecord {}

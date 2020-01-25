@@ -8,17 +8,18 @@ const Done = props => {
 
   const text =
     `${context.nameJa}完了！ ` +
-    inbox.map(x => `${x.name}: ${x.count}回 (${x.seconds}秒)`).join(',  ') +
+    inbox.map(context.resultText).join(',  ') +
     ' | ';
   const url = 'https://kintrainer.netlify.com/';
-  const hashtags = '筋トレーナー';
+  const hashtags = context.hashtags;
   const tweetURI = `https://twitter.com/intent/tweet?text=${text}&url=${url}&hashtags=${hashtags}`;
   const encodedURI = encodeURI(tweetURI);
 
   return (
     <div className="container">
-      <h1>トレーニング成果</h1>
-      <p>おつかれさまでした！</p>
+      <h1>{context.nameJa}の成果</h1>
+      <p>おつかれさま！</p>
+      <p>よくがんばりましたね</p>
       <ul>
         {inbox.map((x, i) => (
           <li key={i}>
@@ -26,7 +27,7 @@ const Done = props => {
           </li>
         ))}
       </ul>
-      <a href={encodedURI}>Twitterへ投稿</a>
+      <a href={encodedURI}>ツイートする</a>
     </div>
   );
 };

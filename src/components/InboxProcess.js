@@ -4,41 +4,39 @@ import InboxProcessItem from './InboxProcessItem';
 import DoContext from '@/contexts/doContext';
 import {inboxReducer} from '@/reducers/inboxReducer';
 
+// TODO: インターバル時間はいずれ設定できるようにする
+const interval = 3;
+
 const InboxProcess = props => {
   const {inbox, nextState} = props;
   const context = useContext(DoContext);
-  const initItem = item => ({
-    data: item,
-    processStatus: context.processStatus.STANDBY,
-  });
   const [state, dispatch] = useReducer(inboxReducer, {
-    inbox: inbox.map(x => initItem(x)),
+    inbox: inbox.map(record => context.newProcess(record.name)),
   });
-  const hasProgress = state.inbox.some(
-    item => item.processStatus === context.processStatus.PROGRESS,
-  );
+  const hasWIP = state.inbox.some(item => item.isWIP());
+  const resultInbox = () =>
+    state.inbox
+      .filter(x => x.isDone())
+      .map(x => context.newResult(x.name, x.count, x.seconds));
 
-  const inboxItem = (item, index) => (
+  const itemize = (item, index) => (
     <InboxProcessItem
       key={index}
       item={item}
+      interval={interval}
       index={index}
       dispatch={dispatch}
-      disabled={
-        hasProgress
-          ? item.processStatus === context.processStatus.STANDBY
-          : false
-      }
+      disabled={hasWIP ? item.isStandby() : false}
     />
   );
-  const resultInbox = state.inbox
-    .filter(x => x.processStatus == context.processStatus.DONE)
-    .map(x => x.data);
 
   return (
     <div>
-      <dl>{state.inbox.map(inboxItem)}</dl>
-      <button onClick={() => nextState(resultInbox)} disabled={hasProgress}>次へ</button>
+      <p>{interval}秒に1回のペースで行う</p>
+      <dl>{state.inbox.map(itemize)}</dl>
+      <button onClick={() => nextState(resultInbox())} disabled={hasWIP}>
+        次へ
+      </button>
     </div>
   );
 };

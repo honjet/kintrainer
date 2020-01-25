@@ -8,9 +8,9 @@ const InboxForm = props => {
   const {nextState} = props;
   const context = useContext(DoContext);
   const [state, dispatch] = useReducer(inboxReducer, context.initialState);
-  const lastIndex = state.inbox.length - 1;
+  const lastIndex = state.inbox.size - 1;
 
-  const clickNextButton = () => {
+  const handleClickNext = () => {
     nextState(state.inbox.filter(x => !x.isEmpty()));
   };
 
@@ -20,15 +20,15 @@ const InboxForm = props => {
       item={item}
       index={index}
       dispatch={dispatch}
-      isLast={index === state.inbox.length - 1}
-      isBeforeLast={index === state.inbox.length - 2}
+      isLast={index === state.inbox.size - 1}
+      isBeforeLast={index === state.inbox.size - 2}
     />
   );
 
   return (
     <div>
       <ul>{state.inbox.map(inboxItem)}</ul>
-      <button onClick={clickNextButton}>次へ</button>
+      <button onClick={handleClickNext}>次へ</button>
     </div>
   );
 };

@@ -1,3 +1,5 @@
+// inbox は Record型(immutable)
+
 export const InboxActionType = {
   CHANGE: 'change',
   ADD: 'add',
@@ -5,38 +7,32 @@ export const InboxActionType = {
 };
 
 export const inboxReducer = (state, action) => {
+  const {inbox} = state;
+  const {record, index} = action;
   switch (action.type) {
     case InboxActionType.CHANGE:
-      return {
-        ...state,
-        inbox: changeInbox(state.inbox, action.item, action.index),
-      };
+      return {...state, inbox: changeInbox(inbox, record, index)};
     case InboxActionType.ADD:
-      return {...state, inbox: addInbox(state.inbox, action.item)};
+      return {...state, inbox: addInbox(inbox, record)};
     case InboxActionType.REMOVE:
-      return {...state, inbox: removeInbox(state.inbox, action.index)};
+      return {...state, inbox: removeInbox(inbox, index)};
     default:
       throw new Error();
   }
 };
 
-const addInbox = (inbox, item) => [...inbox, item];
+const addInbox = (inbox, record) => inbox.push(record);
+const changeInbox = (inbox, record, index) => inbox.set(index, record);
+const removeInbox = (inbox, index) => inbox.remove(index);
 
-const changeInbox = (inbox, item, index) => {
-  inbox[index] = item;
-  return inbox;
-};
-
-const removeInbox = (inbox, index) => inbox.filter((_, i) => i !== index);
-
-export const addAction = item => ({
+export const addAction = record => ({
   type: InboxActionType.ADD,
-  item,
+  record,
 });
 
-export const changeAction = (item, index) => ({
+export const changeAction = (record, index) => ({
   type: InboxActionType.CHANGE,
-  item,
+  record,
   index,
 });
 

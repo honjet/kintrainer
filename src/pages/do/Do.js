@@ -8,7 +8,7 @@ const DoState = {
   WILL_DO: 'will_do',
   DOING: 'doing',
   DONE: 'done',
-}
+};
 
 const Do = props => {
   const [state, setState] = useState(DoState.WILL_DO);
@@ -20,9 +20,11 @@ const Do = props => {
 
   switch (state) {
     case DoState.WILL_DO:
-      return <WillDo nextState={a => nextState(DoState.DOING, a)}/>;
+      return <WillDo nextState={a => nextState(DoState.DOING, a)} />;
     case DoState.DOING:
-      return <Doing inbox={inbox} nextState={a => nextState(DoState.DONE, a)}/>;
+      return (
+        <Doing inbox={inbox} nextState={a => nextState(DoState.DONE, a)} />
+      );
     case DoState.DONE:
       return <Done inbox={inbox} />;
     default:

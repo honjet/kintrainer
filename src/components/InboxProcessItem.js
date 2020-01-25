@@ -4,38 +4,21 @@ import DoContext from '@/contexts/doContext';
 import {changeAction, replaceAction} from '@/reducers/inboxReducer';
 
 const InboxProcessItem = props => {
-  const {item, index, disabled, dispatch} = props;
+  const {item, index, interval, disabled, dispatch} = props;
   const context = useContext(DoContext);
   const [seconds, setSeconds] = useState(0);
-  const interval = 3;
   const count = () => parseInt(seconds / interval, 10);
   const [processStatus, setStatus] = useState(context.processStatus.STANDBY);
 
-  const nextStatus = () => {
+  const handleStatus = () => {
     switch (processStatus) {
       case context.processStatus.STANDBY:
-        setStatus(context.processStatus.PROGRESS);
-        dispatch(
-          changeAction(
-            {
-              ...item,
-              processStatus: context.processStatus.PROGRESS,
-            },
-            index,
-          ),
-        );
+        setStatus(context.processStatus.WIP);
+        dispatch(changeAction(item.wip(), index));
         return;
-      case context.processStatus.PROGRESS:
+      case context.processStatus.WIP:
         setStatus(context.processStatus.DONE);
-        dispatch(
-          changeAction(
-            {
-              data: context.newResult(item.data, count(), seconds),
-              processStatus: context.processStatus.DONE,
-            },
-            index,
-          ),
-        );
+        dispatch(changeAction(item.done(count(), seconds), index));
         return;
       default:
         return;
@@ -44,7 +27,7 @@ const InboxProcessItem = props => {
 
   useEffect(() => {
     const id = setInterval(() => {
-      if (processStatus === context.processStatus.PROGRESS) {
+      if (processStatus == context.processStatus.WIP) {
         setSeconds(s => s + 1);
       }
     }, 1000);
@@ -56,8 +39,8 @@ const InboxProcessItem = props => {
   return (
     <>
       <dt>
-        <button onClick={nextStatus} disabled={disabled}>
-          {item.data.name}
+        <button onClick={handleStatus} disabled={disabled}>
+          {item.name}
         </button>
         {processStatus}
       </dt>

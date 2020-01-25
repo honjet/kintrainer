@@ -1,5 +1,10 @@
+const {List} = require('immutable');
+
 import {createContext} from 'react';
 import Workout from '@/models/workout';
+import WorkoutProcess, {
+  ProcessStatus as WorkoutProcessStatus,
+} from '@/models/workoutProcess';
 import WorkoutResult from '@/models/workoutResult';
 
 const DoContext = createContext();
@@ -10,7 +15,7 @@ export const workoutContext = {
   nameJa: '筋トレ',
   doingDescription: 'Training',
   initialState: {
-    inbox: [
+    inbox: List([
       'プッシュアップ',
       'スクワット',
       'プルアップ',
@@ -18,14 +23,13 @@ export const workoutContext = {
       'ブリッジ',
       'ハンドスタンド・プッシュアップ',
       '',
-    ].map(s => new Workout(s)),
+    ]).map(name => new Workout({name})),
   },
-  processStatus: {
-    STANDBY: 'standby',
-    PROGRESS: 'progress',
-    DONE: 'done',
-  },
-  newItem: name => new Workout(name),
-  newResult: (workout, count, seconds) =>
-    new WorkoutResult({workout, count, seconds}),
+  processStatus: WorkoutProcessStatus,
+  newRecord: name => new Workout({name}),
+  newProcess: name => new WorkoutProcess({name}),
+  newResult: (name, count, seconds) =>
+    new WorkoutResult({name, count, seconds}),
+  resultText: x => `${x.name}: ${x.count}回 (${x.seconds}秒)`,
+  hashtags: '筋トレーナー',
 };
