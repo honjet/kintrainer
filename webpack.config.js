@@ -1,4 +1,7 @@
-const publidDir = __dirname + '/public';
+const path = require('path')
+
+const publidDir = path.resolve(__dirname, 'public');
+const srcRoot = path.resolve(__dirname, 'src');
 
 module.exports = {
   entry: [
@@ -19,7 +22,14 @@ module.exports = {
     }]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    modules: [
+      'node_modules',
+      srcRoot
+    ],
+    alias: {
+      '@': srcRoot
+    }
   },
   devServer: {
     historyApiFallback: true,
