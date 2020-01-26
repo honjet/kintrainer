@@ -7,7 +7,7 @@ const Doing = props => {
   const context = React.useContext(DoContext);
 
   return (
-    <div className="container">
+    <div className="Doing container">
       <h1>Now {context.doingDescription}...</h1>
       <InboxProcess {...props} />
     </div>

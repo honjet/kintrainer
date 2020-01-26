@@ -26,9 +26,9 @@ const InboxForm = props => {
   );
 
   return (
-    <div>
+    <div className='InboxForm'>
       <ul>{state.inbox.map(inboxItem)}</ul>
-      <button onClick={handleClickNext}>次へ</button>
+      <button className='next-btn' onClick={handleClickNext}>次へ</button>
     </div>
   );
 };

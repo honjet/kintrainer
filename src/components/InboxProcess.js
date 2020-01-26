@@ -31,10 +31,15 @@ const InboxProcess = props => {
   );
 
   return (
-    <div>
-      <p>{interval}秒に1回のペースで行う</p>
-      <dl>{state.inbox.map(itemize)}</dl>
-      <button onClick={() => nextState(resultInbox())} disabled={hasWIP}>
+    <div className="InboxProcess">
+      <p>※ {interval}秒に1回のペースで行う</p>
+      <table>
+        <tbody>{state.inbox.map(itemize)}</tbody>
+      </table>
+      <button
+        className="next-btn"
+        onClick={() => nextState(resultInbox())}
+        disabled={hasWIP}>
         次へ
       </button>
     </div>

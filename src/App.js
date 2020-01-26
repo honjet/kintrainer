@@ -6,13 +6,15 @@ import DoContext, {workoutContext} from '@/contexts/doContext';
 
 function App(props) {
   return (
-    <BrowserRouter>
-      <Switch>
-        <DoContext.Provider value={workoutContext}>
-          <Route exact path="/" component={Do} />
-        </DoContext.Provider>
-      </Switch>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <Switch>
+          <DoContext.Provider value={workoutContext}>
+            <Route exact path="/" component={Do} />
+          </DoContext.Provider>
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 

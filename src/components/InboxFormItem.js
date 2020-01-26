@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 import DoContext from '@/contexts/doContext';
 import {addAction, changeAction, removeAction} from '@/reducers/inboxReducer';
@@ -22,7 +23,7 @@ const InboxFormItem = props => {
   };
 
   return (
-    <li>
+    <li className="InboxFormItem">
       <input
         type="text"
         name={`${context.name}_name_${index}`}
@@ -30,7 +31,9 @@ const InboxFormItem = props => {
         value={item.name}
         onChange={e => handleNameChange(e.target.value)}
       />
-      <button onClick={handleDeleteClick}>×</button>
+      <button className="remove-btn" onClick={handleDeleteClick}>
+        <FontAwesomeIcon icon="trash-alt" />
+      </button>
     </li>
   );
 };

@@ -9,9 +9,8 @@ const WillDo = props => {
   const context = useContext(DoContext);
 
   return (
-    <div className="container">
+    <div className="WillDo container">
       <h1>{context.nameJa}メニューを決める</h1>
-      <p>今からやる{context.nameJa}の名前を入力してください。</p>
       <InboxForm nextState={nextState} />
     </div>
   );

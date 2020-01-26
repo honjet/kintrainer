@@ -37,17 +37,19 @@ const InboxProcessItem = props => {
   }, [processStatus]);
 
   return (
-    <>
-      <dt>
-        <button onClick={handleStatus} disabled={disabled}>
+    <tr>
+      <td>
+        <button
+          className={`process-btn ${processStatus}`}
+          onClick={handleStatus}
+          disabled={disabled}>
           {item.isWIP() ? 'ストップ' : item.name}
         </button>
-        {processStatus}
-      </dt>
-      <dd>
-        {seconds}秒, {count()}回
-      </dd>
-    </>
+      </td>
+      <td>
+        {count()}回 ({seconds})
+      </td>
+    </tr>
   );
 };
 
