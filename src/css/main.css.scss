@@ -1,6 +1,13 @@
 @charset "UTF-8";
 
 body {
-  h1 {
-  }
+  color: #666;
 }
+
+.App {
+  padding: 15px 15px 45px;
+  min-width: 290px;
+}
+
+@import 'do';
+@import 'inbox';

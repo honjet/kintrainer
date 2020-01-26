@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 
 import DoContext from '@/contexts/doContext';
+import InboxDone from '@/components/InboxDone';
 
 const Done = props => {
   const {inbox} = props;
@@ -8,7 +9,7 @@ const Done = props => {
 
   const text =
     `${context.nameJa}完了！ ` +
-    inbox.map(context.resultText).join(',  ') +
+    inbox.map(context.resultTweetText).join(',  ') +
     ' | ';
   const url = 'https://kintrainer.netlify.com/';
   const hashtags = context.hashtags;
@@ -16,18 +17,13 @@ const Done = props => {
   const encodedURI = encodeURI(tweetURI);
 
   return (
-    <div className="container">
+    <div className="Done container">
       <h1>{context.nameJa}の成果</h1>
-      <p>おつかれさま！</p>
-      <p>よくがんばりましたね</p>
-      <ul>
-        {inbox.map((x, i) => (
-          <li key={i}>
-            {x.name}: {x.count}回 ({x.seconds}秒)
-          </li>
-        ))}
-      </ul>
-      <a href={encodedURI}>ツイートする</a>
+      <p>おつかれさま！よくがんばりましたね！</p>
+      <InboxDone inbox={inbox} />
+      <a className="next-btn" href={encodedURI}>
+        ツイートする
+      </a>
     </div>
   );
 };
