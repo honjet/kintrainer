@@ -20,6 +20,12 @@
   }
 
   button {
+    outline: 0;
+
+    &::-moz-focus-inner {
+      border: 0;
+    }
+
     &:hover {
       opacity: 0.8;
     }
