@@ -6,14 +6,16 @@ import Header from './Header';
 
 function App(props) {
   return (
-    <BrowserRouter>
-      <Header />
-      <Switch>
-        <DoContext.Provider value={workoutContext}>
-          <Route exact path="/" component={Do} />
-        </DoContext.Provider>
-      </Switch>
-    </BrowserRouter>
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <DoContext.Provider value={workoutContext}>
+            <Route exact path="/" component={Do} />
+          </DoContext.Provider>
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 }
 

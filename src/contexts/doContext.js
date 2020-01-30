@@ -30,6 +30,7 @@ export const workoutContext = {
   newProcess: name => new WorkoutProcess({name}),
   newResult: (name, count, seconds) =>
     new WorkoutResult({name, count, seconds}),
-  resultText: x => `${x.name}: ${x.count}回 (${x.seconds}秒)`,
+  resultText: x => `${x.count}回 (${x.seconds}秒)`,
+  resultTweetText: x => `${x.name}: ${x.count}回 (${x.seconds}秒)`,
   hashtags: '筋トレーナー',
 };

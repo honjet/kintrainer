@@ -18,18 +18,22 @@ const Do = props => {
     setState(stateName);
   };
 
-  switch (state) {
-    case DoState.WILL_DO:
-      return <WillDo nextState={a => nextState(DoState.DOING, a)} />;
-    case DoState.DOING:
-      return (
-        <Doing inbox={inbox} nextState={a => nextState(DoState.DONE, a)} />
-      );
-    case DoState.DONE:
-      return <Done inbox={inbox} />;
-    default:
-      throw Error();
-  }
+  const container = () => {
+    switch (state) {
+      case DoState.WILL_DO:
+        return <WillDo nextState={a => nextState(DoState.DOING, a)} />;
+      case DoState.DOING:
+        return (
+          <Doing inbox={inbox} nextState={a => nextState(DoState.DONE, a)} />
+        );
+      case DoState.DONE:
+        return <Done inbox={inbox} />;
+      default:
+        throw Error();
+    }
+  };
+
+  return <div className="Do wrapper">{container()}</div>;
 };
 
 export default Do;
