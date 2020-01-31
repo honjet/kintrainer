@@ -21,7 +21,7 @@ const Done = props => {
       <h1>{context.nameJa}の成果</h1>
       <p>おつかれさま！よくがんばりましたね！</p>
       <InboxDone inbox={inbox} />
-      <a className="next-btn" href={encodedURI}>
+      <a className="tweet-btn" href={encodedURI}>
         ツイートする
       </a>
     </div>
