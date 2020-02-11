@@ -10,7 +10,7 @@ const WillDo = props => {
 
   return (
     <div className="WillDo container">
-      <h1>{context.nameJa}メニューを決める</h1>
+      <h2>{context.nameJa}メニューを決める</h2>
       <InboxForm nextState={nextState} />
     </div>
   );

@@ -8,7 +8,7 @@ const Doing = props => {
 
   return (
     <div className="Doing container">
-      <h1>Now {context.doingDescription}...</h1>
+      <h2>Now {context.doingDescription}...</h2>
       <InboxProcess {...props} />
     </div>
   );

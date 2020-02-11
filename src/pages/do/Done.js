@@ -18,7 +18,7 @@ const Done = props => {
 
   return (
     <div className="Done container">
-      <h1>{context.nameJa}の成果</h1>
+      <h2>{context.nameJa}の成果</h2>
       <p>おつかれさま！よくがんばりましたね！</p>
       <InboxDone inbox={inbox} />
       <a className="next-btn" href={encodedURI}>
